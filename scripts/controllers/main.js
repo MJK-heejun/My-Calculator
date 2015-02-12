@@ -15,21 +15,26 @@ angular.module('testApp')
       'Karma'
     ];
 
-  $scope.gridsterOpts = {
-    margins: [10, 10],
-    columns: 5,
-    outerMargin: false,
-    pushing: true,
-    floating: true,
-    mobileBreakPoint: 330,
-    draggable: {
-      enabled: true
-    },
-    resizable: {
-      enabled: true,
-      handles: ['n', 'e', 's', 'w', 'se', 'sw']
-    }
-  };
+    $scope.snapOpts = {
+      disable: 'right'
+    };
+
+    $scope.gridsterOpts = {
+      margins: [10, 10],
+      columns: 5,
+      outerMargin: false,
+      pushing: true,
+      floating: false,
+      mobileBreakPoint: 330,
+      draggable: {
+        enabled: true
+      },
+      resizable: {
+        enabled: true,
+        handles: ['n', 'e', 's', 'w', 'se', 'sw']
+      }
+    };
+
 
     $scope.standardItems = [
       { sizeX: 1, sizeY: 1, row: 0, col: 0 },
@@ -37,7 +42,6 @@ angular.module('testApp')
       { size: { x: 1, y: 1 }, position: [0, 2] },
       { size: { x: 1, y: 1 }, position: [0, 2] }
     ];
-
 
 
   });

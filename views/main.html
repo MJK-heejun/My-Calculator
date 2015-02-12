@@ -1,36 +1,42 @@
 
-
-
-<div class="row">
-  <div class="col-xs-12 border-b">
-    textbox
-  </div>
+<div snap-drawer>
+  this is drawer
 </div>
 
-<div class="row">
-  <div class="col-xs-2 border-b">
-    Menu b
-  </div>  
-  <div class="col-xs-2 border-b">
-    |<
-  </div>
-  <div class="col-xs-4 border-b">
-    scroll graphic
-  </div>
-  <div class="col-xs-2 border-b">
-    >|
-  </div>  
-  <div class="col-xs-2 border-b">
-    lock Graphic
-  </div>        
-</div>
 
-<div class="row">
-    <div gridster="gridsterOpts" class="col-xs-12">
-        <ul>
-            <li gridster-item="item" ng-repeat="item in standardItems">
-                aaa
-            </li>
-        </ul>
+<div class="snap-content" snap-content snap-options="snapOpts">
+<button class="btn btn-primary btn-small" snap-toggle="left">click me</button>
+  <div class="row">
+    <div class="col-xs-12 border-b">
+      textbox
     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 border-b">
+      Menu b
+    </div>  
+    <div class="col-xs-2 border-b">
+      |<
+    </div>
+    <div class="col-xs-4 border-b">
+      scroll graphic
+    </div>
+    <div class="col-xs-2 border-b">
+      >|
+    </div>  
+    <div class="col-xs-2 border-b">
+      lock Graphic
+    </div>        
+  </div>
+
+  <div class="row">
+      <div gridster="gridsterOpts" class="col-xs-12">
+          <ul>
+              <li gridster-item="item" ng-repeat="item in standardItems">
+                  aaa
+              </li>
+          </ul>
+      </div>
+  </div>
 </div>

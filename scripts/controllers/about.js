@@ -14,4 +14,14 @@ angular.module('testApp')
       'AngularJS',
       'Karma'
     ];
+
+    $scope.snapOpts = {
+      disable: 'left'
+    };
+
+
+
+
+
+
   });
