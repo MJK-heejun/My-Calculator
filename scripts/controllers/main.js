@@ -21,6 +21,7 @@ angular.module('testApp')
     outerMargin: false,
     pushing: true,
     floating: true,
+    mobileBreakPoint: 330,
     draggable: {
       enabled: true
     },
