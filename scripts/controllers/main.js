@@ -149,14 +149,33 @@ angular.module('testApp')
     $scope.insertValue = function(value){
       if(value == "="){
         try{
-          console.log(math.eval($scope.formData.fill_val));  
+          console.log(math.eval($scope.formData));  
         }catch(err){
           console.log(err);
         }        
       }else{
-        
+
+        if(typeof $scope.formData == 'undefined'){
+          console.log('it is undefined');
+          $scope.formData = "";
+        }
+
+        console.log($scope.caret.get);
+        console.log($scope.formData);
+
       }
     };
+
+
+    $scope.ttt = function(){
+      /*
+      console.log($scope.formData.fill_val);
+      console.log($scope.formData.fill_val[0]);
+      $scope.formData.fill_val = "bbbb";
+      $scope.formData.fill_val = $scope.formData.fill_val+"b";
+      $scope.formData.fill_val[0] = "c";
+      */
+    }
 
 
     $scope.resetAll = function(){
