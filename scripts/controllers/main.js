@@ -33,10 +33,46 @@ angular.module('testApp')
 
 
     $scope.default_items = [
-      { sizeX: 1, sizeY: 1, row: 0, col: 0, name: "sss" },
-      { size: { x: 1, y: 2 }, position: [0, 2], name: "sss2" },
-      { size: { x: 1, y: 1 }, position: [0, 2], name: "sss3" },
-      { size: { x: 1, y: 1 }, position: [0, 2], name: "sss4"  }
+      { size: { x: 1, y: 1 }, 
+        position: [0, 2], 
+        name: "(",
+        value: "("  },
+      { size: { x: 1, y: 1 }, 
+        position: [0, 2], 
+        name: ")",
+        value: ")"  },          
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "sin",
+        value: "sin("  },          
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "cos",
+        value: "cos("  },          
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "1",
+        value: "1"  },
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "2",
+        value: "2"  },
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "3",
+        value: "3"  },                          
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "+",
+        value: "+"  },
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "√",
+        value: "sqrt("  },                
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "π",
+        value: "pi"  },           
     ];
 
 
@@ -45,7 +81,8 @@ angular.module('testApp')
     if(localStorage.getItem("saved_items") == null){
       $scope.current_items = $scope.default_items;
     }else{
-      $scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
+      $scope.current_items = $scope.default_items;
+      //$scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
     }
 
 
@@ -53,7 +90,7 @@ angular.module('testApp')
 
 
     //adding element
-    $scope.default_items.push({ size: { x: 1, y: 1 }, position: [0, 0], name: "new" });
+    //$scope.default_items.push({ size: { x: 1, y: 1 }, position: [0, 0], name: "new" });
 
     $scope.dashboards = {
       '1': {
@@ -93,6 +130,14 @@ angular.module('testApp')
     };
 
 
+    $scope.locked = true;
+    //disable, able the grid
+    $scope.$watch('locked', function(){      
+      if($scope.locked)
+        $scope.gridsterOpts.draggable.enabled = false;
+      else
+        $scope.gridsterOpts.draggable.enabled = true;
+    });
 
     $scope.resetAll = function(){
       $scope.current_items = $scope.default_items;
