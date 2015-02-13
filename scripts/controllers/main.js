@@ -8,7 +8,7 @@
  * Controller of the testApp
  */
 angular.module('testApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, snapRemote) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -16,7 +16,8 @@ angular.module('testApp')
     ];
 
     $scope.snapOpts = {
-      disable: 'right'
+      disable: 'right',
+      touchToDrag: false
     };
 
     $scope.gridsterOpts = {
@@ -43,5 +44,17 @@ angular.module('testApp')
       { size: { x: 1, y: 1 }, position: [0, 2] }
     ];
 
+
+    /*
+    snapRemote.getSnapper().then(function(snapper) {
+      snapper.on('open', function() {
+        console.log('Drawer opened!');
+      });
+      
+      snapper.on('close', function() {
+        console.log('Drawer closed!');
+      });
+    });
+*/
 
   });
