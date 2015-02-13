@@ -33,10 +33,13 @@
 
   <div class="row">
       <div gridster="gridsterOpts" class="col-xs-12">
-          <ul>              
-              <li gridster-item="item" ng-repeat="item in current_items">
+          <ul>
+              <li ng-if="locked" gridster-item="item" ng-repeat="item in current_items" ng-click="insertValue(item.value)">
                   {{item.name}}
               </li>
+              <li ng-if="!locked" gridster-item="item" ng-repeat="item in current_items">
+                  {{item.name}}
+              </li>              
           </ul>
       </div>
   </div>

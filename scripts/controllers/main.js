@@ -73,6 +73,10 @@ angular.module('testApp')
         position: [0, 0], 
         name: "π",
         value: "pi"  },           
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "=",
+        value: "="  },          
     ];
 
 
@@ -133,11 +137,27 @@ angular.module('testApp')
     $scope.locked = true;
     //disable, able the grid
     $scope.$watch('locked', function(){      
-      if($scope.locked)
+      if($scope.locked){
         $scope.gridsterOpts.draggable.enabled = false;
-      else
+        $scope.gridsterOpts.resizable.enabled = false;
+      }else{
         $scope.gridsterOpts.draggable.enabled = true;
+        $scope.gridsterOpts.resizable.enabled = true;
+      }
     });
+
+    $scope.insertValue = function(value){
+      if(value == "="){
+        try{
+          console.log(math.eval($scope.formData.fill_val));  
+        }catch(err){
+          console.log(err);
+        }        
+      }else{
+        
+      }
+    };
+
 
     $scope.resetAll = function(){
       $scope.current_items = $scope.default_items;
