@@ -1,6 +1,7 @@
 
 <div snap-drawer>
-  this is drawer
+    <button class="btn btn-primary btn-small" ng-click="saveCurrent()">Save</button>
+    <button class="btn btn-primary btn-small" ng-click="resetAll()">Reset</button>
 </div>
 
 
@@ -33,8 +34,8 @@
   <div class="row">
       <div gridster="gridsterOpts" class="col-xs-12">
           <ul>
-              <li gridster-item="item" ng-repeat="item in standardItems">
-                  aaa
+              <li gridster-item="item" ng-repeat="item in current_items">
+                  {{item.name}}
               </li>
           </ul>
       </div>
