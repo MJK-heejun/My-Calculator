@@ -13,6 +13,7 @@ angular.module('testApp')
     $scope.locked = true; //flag for lock/unlock
     $scope.form_data_array = []; //array for form_data
     $scope.form_data_array_index = 0; //array for form_data
+    $scope.last_ans;
 
     $scope.snapOpts = {
       disable: 'right',
@@ -88,7 +89,11 @@ angular.module('testApp')
       { size: { x: 1, y: 1 }, 
         position: [0, 0], 
         name: "ac",
-        value: "ac"  }                
+        value: "ac"  },                
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "ANS",
+        value: "ans"  }        
     ];
 
 
@@ -101,6 +106,10 @@ angular.module('testApp')
       $scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
     }   
 
+    //get the last angswer from storage
+    if(localStorage.getItem("last_ans") != null){
+      $scope.last_ans = localStorage.getItem("last_ans");
+    }
 
     //adding element
     //$scope.default_items.push({ size: { x: 1, y: 1 }, position: [0, 0], name: "new" });
@@ -125,13 +134,17 @@ angular.module('testApp')
 
       if(value == "="){
         try{
-          console.log(math.eval($scope.form_data));  
+          $scope.last_ans = math.eval($scope.form_data);
+          localStorage.setItem("last_ans", $scope.last_ans);
+          console.log("answer: "+$scope.last_ans);
         }catch(err){
           console.log(err);
         }        
       }else if(value == "ac"){        
         $scope.form_data = ""; 
         $scope.form_data_array = [];
+      }else if(value == "ans"){
+        pushIntoFormDataArray($scope.last_ans);        
       }else if(value == "del"){
         deleteFromFormDataArray(value);
       }else{
@@ -155,12 +168,14 @@ angular.module('testApp')
     }
 
     function pushIntoFormDataArray(value){
-      if($scope.form_data.length == 0){
-        $scope.form_data = value;        
+      if($scope.form_data.length >= 0){
+        $scope.form_data = $scope.form_data + value;
         $scope.form_data_array.push(value);
-      }else if($scope.form_data.length > 0){
+      }/*else if($scope.form_data.length > 0){
         $scope.form_data += value;
         $scope.form_data_array.push(value);
+      }*/else{
+        console.log("??? why < 0?: "+$scope.form_data.length);
       }
     }
 
