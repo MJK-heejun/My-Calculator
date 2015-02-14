@@ -13,7 +13,9 @@ angular.module('testApp')
     $scope.locked = true; //flag for lock/unlock
     $scope.form_data_array = []; //array for form_data
     $scope.form_data_array_index = 0; //array for form_data
-    $scope.last_ans;
+    $scope.last_ans; //last answer value
+    $scope.pretty_print = false; //pretty print by MathJax
+    $scope.is_answer_displayed = false; //flag used when displaying answer
 
     $scope.snapOpts = {
       disable: 'right',
@@ -136,26 +138,44 @@ angular.module('testApp')
       if(typeof $scope.form_data == 'undefined')
         $scope.form_data = "";        
 
+      //reset the form_data textbox after the answer
+      if($scope.is_answer_displayed){
+        $scope.form_data = ""; 
+        $scope.form_data_array = [];        
+        $scope.is_answer_displayed = false;
+      }
+
       if(value == "="){
         try{
           $scope.last_ans = math.eval($scope.form_data);
           localStorage.setItem("last_ans", $scope.last_ans);
           console.log("answer: "+$scope.last_ans);
+
+          $scope.is_answer_displayed = true;
         }catch(err){
           console.log(err);
         }        
+
+        if($scope.pretty_print){
+          //print by mathjax
+        }else{
+          //print in the form data input field
+          $scope.form_data = ""+$scope.last_ans;
+        }
+
       }else if(value == "ac"){        
         $scope.form_data = ""; 
         $scope.form_data_array = [];
       }else if(value == "ans"){
         pushIntoFormDataArray($scope.last_ans);        
       }else if(value == "del"){
-        deleteFromFormDataArray(value);
+        deleteFromFormDataArray();
       }else{
         pushIntoFormDataArray(value);        
       }
 
     };
+
 
     $scope.resetAll = function(){
       $scope.current_items = $scope.default_items;
@@ -166,7 +186,7 @@ angular.module('testApp')
 
 
 
-    function deleteFromFormDataArray(value){
+    function deleteFromFormDataArray(){
       $scope.form_data_array.pop();
       $scope.form_data = $scope.form_data_array.join("");
     }
