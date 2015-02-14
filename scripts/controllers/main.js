@@ -10,6 +10,10 @@
 angular.module('testApp')
   .controller('MainCtrl', function ($scope, snapRemote) {
 
+    $scope.locked = true; //flag for lock/unlock
+    $scope.form_data_array = []; //array for form_data
+    $scope.form_data_array_index = 0; //array for form_data
+
     $scope.snapOpts = {
       disable: 'right',
       touchToDrag: false
@@ -77,6 +81,14 @@ angular.module('testApp')
         position: [0, 0], 
         name: "=",
         value: "="  },          
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "del",
+        value: "del"  },
+      { size: { x: 1, y: 1 }, 
+        position: [0, 0], 
+        name: "ac",
+        value: "ac"  }                
     ];
 
 
@@ -85,56 +97,16 @@ angular.module('testApp')
     if(localStorage.getItem("saved_items") == null){
       $scope.current_items = $scope.default_items;
     }else{
-      $scope.current_items = $scope.default_items;
-      //$scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
-    }
-
-
-
+      //$scope.current_items = $scope.default_items;
+      $scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
+    }   
 
 
     //adding element
     //$scope.default_items.push({ size: { x: 1, y: 1 }, position: [0, 0], name: "new" });
 
-    $scope.dashboards = {
-      '1': {
-        id: '1',
-        name: 'Home',
-        widgets: [{
-          col: 0,
-          row: 0,
-          sizeY: 1,
-          sizeX: 1,
-          name: "Widget 1"
-        }, {
-          col: 2,
-          row: 1,
-          sizeY: 1,
-          sizeX: 1,
-          name: "Widget 2"
-        }]
-      },
-      '2': {
-        id: '2',
-        name: 'Other',
-        widgets: [{
-          col: 1,
-          row: 1,
-          sizeY: 1,
-          sizeX: 2,
-          name: "Other Widget 1"
-        }, {
-          col: 1,
-          row: 3,
-          sizeY: 1,
-          sizeX: 1,
-          name: "Other Widget 2"
-        }]
-      }
-    };
 
 
-    $scope.locked = true;
     //disable, able the grid
     $scope.$watch('locked', function(){      
       if($scope.locked){
@@ -147,36 +119,26 @@ angular.module('testApp')
     });
 
     $scope.insertValue = function(value){
+
+      if(typeof $scope.form_data == 'undefined')
+        $scope.form_data = "";        
+
       if(value == "="){
         try{
-          console.log(math.eval($scope.formData));  
+          console.log(math.eval($scope.form_data));  
         }catch(err){
           console.log(err);
         }        
+      }else if(value == "ac"){        
+        $scope.form_data = ""; 
+        $scope.form_data_array = [];
+      }else if(value == "del"){
+        deleteFromFormDataArray(value);
       }else{
-
-        if(typeof $scope.formData == 'undefined'){
-          console.log('it is undefined');
-          $scope.formData = "";
-        }
-
-        console.log($scope.caret.get);
-        console.log($scope.formData);
-
+        pushIntoFormDataArray(value);        
       }
+
     };
-
-
-    $scope.ttt = function(){
-      /*
-      console.log($scope.formData.fill_val);
-      console.log($scope.formData.fill_val[0]);
-      $scope.formData.fill_val = "bbbb";
-      $scope.formData.fill_val = $scope.formData.fill_val+"b";
-      $scope.formData.fill_val[0] = "c";
-      */
-    }
-
 
     $scope.resetAll = function(){
       $scope.current_items = $scope.default_items;
@@ -187,6 +149,19 @@ angular.module('testApp')
 
 
 
+    function deleteFromFormDataArray(value){
+      $scope.form_data_array.pop();
+      $scope.form_data = $scope.form_data_array.join("");
+    }
 
+    function pushIntoFormDataArray(value){
+      if($scope.form_data.length == 0){
+        $scope.form_data = value;        
+        $scope.form_data_array.push(value);
+      }else if($scope.form_data.length > 0){
+        $scope.form_data += value;
+        $scope.form_data_array.push(value);
+      }
+    }
 
   });

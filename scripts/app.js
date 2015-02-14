@@ -16,8 +16,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'gridster',
-    'snap',
-    'eb.caret'
+    'snap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
