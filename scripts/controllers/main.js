@@ -8,7 +8,7 @@
  * Controller of the testApp
  */
 angular.module('testApp')
-  .controller('MainCtrl', function ($scope, snapRemote) {
+  .controller('MainCtrl', function ($scope, snapRemote, ngDialog) {
 
     $scope.locked = true; //flag for lock/unlock
     $scope.form_data_array = []; //array for form_data
@@ -115,6 +115,10 @@ angular.module('testApp')
     //$scope.default_items.push({ size: { x: 1, y: 1 }, position: [0, 0], name: "new" });
 
 
+    $scope.ttt = function(){
+      console.log("yoooink");
+      ngDialog.open({ template: 'views/result.html' });
+    };
 
     //disable, able the grid
     $scope.$watch('locked', function(){      

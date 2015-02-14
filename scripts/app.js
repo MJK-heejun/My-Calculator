@@ -16,7 +16,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'gridster',
-    'snap'
+    'snap',
+    'ngDialog'
   ])
   .config(function ($routeProvider) {
     $routeProvider
