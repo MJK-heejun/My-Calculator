@@ -197,8 +197,8 @@ angular.module('testApp')
     if(localStorage.getItem("saved_items") == null){
       $scope.current_items = $scope.default_items;
     }else{
-      $scope.current_items = $scope.default_items;
-      //$scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
+      //$scope.current_items = $scope.default_items;
+      $scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
     }   
 
     //get the last angswer from storage
