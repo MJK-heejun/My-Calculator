@@ -40,62 +40,155 @@ angular.module('testApp')
 
 
     $scope.default_items = [
-      { size: { x: 1, y: 1 }, 
+    /*
+      { 
+        sizeX: 2,
+        sizeY: 2, 
         position: [0, 2], 
         name: "(",
         value: "("  },
-      { size: { x: 1, y: 1 }, 
-        position: [0, 2], 
+      { 
+    */
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "√",
+        value: "sqrt("  },      
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "!",
+        value: "!"  },          
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "^",
+        value: "^"  },                  
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "(",
+        value: "("  },
+      { 
+        sizeX: 2,
+        sizeY: 2,          
         name: ")",
         value: ")"  },          
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
+      { 
+        sizeX: 2,
+        sizeY: 2,          
         name: "sin",
         value: "sin("  },          
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
+      { 
+        sizeX: 2,
+        sizeY: 2,          
         name: "cos",
         value: "cos("  },          
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
-        name: "1",
-        value: "1"  },
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
-        name: "2",
-        value: "2"  },
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
-        name: "3",
-        value: "3"  },                          
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "tan",
+        value: "tan("  },          
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "DEL",
+        value: "del"  },
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "AC",
+        value: "ac"  },      
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "7",
+        value: "7"  },              
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "8",
+        value: "8"  },
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "9",
+        value: "9"  },        
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "X",
+        value: "*"  },        
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "÷",
+        value: "/"  },       
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "4",
+        value: "4"  },         
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "5",
+        value: "5"  },        
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "6",
+        value: "6"  },     
+      { 
+        sizeX: 2,
+        sizeY: 2,          
         name: "+",
         value: "+"  },
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
-        name: "√",
-        value: "sqrt("  },                
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
-        name: "π",
-        value: "pi"  },           
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "-",
+        value: "-"  },                   
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "1",
+        value: "1"  },        
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "2",
+        value: "2"  },        
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "3",
+        value: "3"  },                                          
+      { 
+        sizeX: 2,
+        sizeY: 4,         
+        name: "ANS",
+        value: "ans"  },  
+      { 
+        sizeX: 2,
+        sizeY: 4,          
         name: "=",
         value: "="  },          
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
-        name: "del",
-        value: "del"  },
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
-        name: "ac",
-        value: "ac"  },                
-      { size: { x: 1, y: 1 }, 
-        position: [0, 0], 
-        name: "ANS",
-        value: "ans"  }        
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "0",
+        value: "0"  },          
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: ".",
+        value: "."  },                                        
+      { 
+        sizeX: 2,
+        sizeY: 2,          
+        name: "π",
+        value: "pi"  }
     ];
 
 
@@ -104,8 +197,8 @@ angular.module('testApp')
     if(localStorage.getItem("saved_items") == null){
       $scope.current_items = $scope.default_items;
     }else{
-      //$scope.current_items = $scope.default_items;
-      $scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
+      $scope.current_items = $scope.default_items;
+      //$scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
     }   
 
     //get the last angswer from storage
@@ -119,7 +212,9 @@ angular.module('testApp')
 
     $scope.ttt = function(){
       console.log("yoooink");
-      ngDialog.open({ template: 'views/result.html' });
+      //ngDialog.open({ template: 'views/result.html' });
+      console.log($scope.caret.set = $scope.form_data.length);
+      console.log($scope.caret.get);
     };
 
     //disable, able the grid
@@ -174,6 +269,8 @@ angular.module('testApp')
         pushIntoFormDataArray(value);        
       }
 
+      //caret setting
+      $scope.caret.set = $scope.form_data.length;
     };
 
 

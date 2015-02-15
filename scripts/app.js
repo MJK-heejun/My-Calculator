@@ -17,7 +17,8 @@ angular
     'ngTouch',
     'gridster',
     'snap',
-    'ngDialog'
+    'ngDialog',
+    'eb.caret'
   ])
   .config(function ($routeProvider) {
     $routeProvider
