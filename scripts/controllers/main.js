@@ -17,11 +17,13 @@ angular.module('testApp')
     $scope.pretty_print = false; //pretty print by MathJax
     $scope.is_answer_displayed = false; //flag used when displaying answer
 
+    //snapjs setting
     $scope.snapOpts = {
       disable: 'right',
       touchToDrag: false
     };
 
+    //girdsterjs setting
     $scope.gridsterOpts = {
       margins: [10, 10],
       columns: 10,
