@@ -26,6 +26,7 @@ angular.module('testApp')
       margins: [10, 10],
       columns: 10,
       outerMargin: false,
+      swapping: true,
       pushing: true,
       floating: true,
       mobileBreakPoint: 330,
