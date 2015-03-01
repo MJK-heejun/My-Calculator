@@ -30,7 +30,7 @@
       <div class="col-xs-3 padding-1">
         <button class="btn btn-primary btn-small width-100" ng-click="saveCurrent()">Save</button>
       </div>
-      <div class="col-xs-3 padding-1">
+      <div class="col-xs-3 padding-1">        
         <button class="btn btn-primary btn-small width-100" ng-click="resetAll()">Reset</button>
       </div>
       <div class="col-xs-3">
@@ -78,10 +78,14 @@
       </div>
     </div>      
     <div class="col-xs-3 vertical-align padding-0">
-      <div class="btn btn-primary btn-xs margin-5 width-100">
+      <div ng-if="locked" class="btn btn-primary btn-xs margin-5 width-100">    
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
           &nbsp;Delete
       </div>
+      <div ng-if="!locked" class="btn btn-danger btn-xs margin-5 width-100">    
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          &nbsp;Delete
+      </div>      
     </div>          
   </div>
 

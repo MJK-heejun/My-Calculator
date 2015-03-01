@@ -224,10 +224,10 @@ angular.module('myCalc')
     $scope.$watch('locked', function(){      
       if($scope.locked){
         $scope.gridsterOpts.draggable.enabled = false;
-        $scope.gridsterOpts.resizable.enabled = false;
+        //$scope.gridsterOpts.resizable.enabled = false;
       }else{
         $scope.gridsterOpts.draggable.enabled = true;
-        $scope.gridsterOpts.resizable.enabled = true;
+        //$scope.gridsterOpts.resizable.enabled = true;
       }
     });
 
