@@ -256,9 +256,14 @@ angular.module('myCalc')
 
         if($scope.pretty_print){
           //print by mathjax
-          //console.log(math.parse($scope.form_data).toTex());
-          $scope.expression = "\\frac{5}{4} \\div \\frac{1}{6}";
-          $scope.expression = math.parse($scope.form_data).toTex();
+          try{
+            $scope.expression = "\\frac{5}{4} \\div \\frac{1}{6}";
+            $scope.expression = math.parse($scope.form_data).toTex();
+            $('#my_modal').modal('toggle');
+          }catch(e){
+            $scope.expression = "error";  
+            $('#my_modal').modal('toggle');
+          }
 
         }else{
           //print in the form data input field

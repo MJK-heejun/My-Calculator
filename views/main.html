@@ -1,10 +1,46 @@
 
+
+<div class="modal fade" id="my_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Result</h4>
+          </div>
+          <div class="modal-body">
+            <span mathjax-bind="expression"></span>
+          </div>
+          <div class="modal-footer tal">
+            = {{last_ans}}
+          </div>          
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <div snap-drawer>
     <div class="page-header">
       <h3 class="tac c-white">My Calculator</h3>
     </div>
-    <button class="btn btn-primary btn-small" ng-click="saveCurrent()">Save</button>
-    <button class="btn btn-primary btn-small" ng-click="resetAll()">Reset</button>
+    <div class="row">
+      <div class="col-xs-3">
+      </div>      
+      <div class="col-xs-3 padding-1">
+        <button class="btn btn-primary btn-small width-100" ng-click="saveCurrent()">Save</button>
+      </div>
+      <div class="col-xs-3 padding-1">
+        <button class="btn btn-primary btn-small width-100" ng-click="resetAll()">Reset</button>
+      </div>
+      <div class="col-xs-3">
+      </div>      
+    </div>
+
+    <ul>
+      
+    </ul>
+
 </div>
 
 
@@ -12,7 +48,7 @@
 
   <div class="row">
     <div class="col-xs-12 padding-0">
-      <input eb-caret="caret" type="text" class="form-control" ng-model="form_data" placeholder="Welcome To My-Custom-Calculator !" readonly/>
+      <input eb-caret="caret" type="text" class="form-control" ng-model="form_data" placeholder="Welcome To My-Calculator !" readonly/>
     </div>
   </div>
 
@@ -66,11 +102,5 @@
       </div>
   </div>
 
-  <div id="pretty">
-    $$$$
-  </div>
-
-    <input type="text" ng-model="expression"><br>
-    <span mathjax-bind="expression"></span>
 </div>
 
