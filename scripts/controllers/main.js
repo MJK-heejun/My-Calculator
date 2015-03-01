@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the testApp
  */
-angular.module('testApp')
+angular.module('myCalc')
   .controller('MainCtrl', function ($scope, snapRemote, ngDialog) {
 
     $scope.locked = true; //flag for lock/unlock
@@ -256,6 +256,10 @@ angular.module('testApp')
 
         if($scope.pretty_print){
           //print by mathjax
+          //console.log(math.parse($scope.form_data).toTex());
+          $scope.expression = "\\frac{5}{4} \\div \\frac{1}{6}";
+          $scope.expression = math.parse($scope.form_data).toTex();
+
         }else{
           //print in the form data input field
           $scope.form_data = ""+$scope.last_ans;

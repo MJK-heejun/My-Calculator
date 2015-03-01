@@ -7,7 +7,7 @@
  * # AboutCtrl
  * Controller of the testApp
  */
-angular.module('testApp')
+angular.module('myCalc')
   .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
