@@ -4,6 +4,7 @@
 body{
   background-color: #EAEAEA;
   /*#ebebeb;*/
+  font-family: Roboto;
 }
 
 
@@ -11,13 +12,30 @@ body{
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    color: #004756;
-    background: #ffffff;
+    
+    color: white;
+    background-color: #424242;
     padding: 10px;
 }
 
 
+.snap-drawer{
+  background-color: #212121;
+}
+
 .snap-content{
-	background-color: #EAEAEA;
+	background-color: #757575;
 	padding: 10px;
+}
+
+.grid-button{
+  
+
+}
+
+
+
+input[type="checkbox"]{
+  width: 10px; 
+  height: 10px;
 }

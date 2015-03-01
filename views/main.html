@@ -8,37 +8,56 @@
 <div class="snap-content" snap-content snap-options="snapOpts">
 
   <div class="row">
-    <div class="col-xs-12 border-b padding-0">
+    <div class="col-xs-12 padding-0">
       <input eb-caret="caret" type="text" class="form-control" ng-model="form_data" placeholder="Welcome To My-Custom-Calculator !" readonly/>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-xs-2 border-b">
-      <button class="btn btn-primary btn-small" snap-toggle="left">Menu</button>
+    <div class="col-xs-3 vertical-align padding-0">
+      <div class="btn btn-primary btn-xs margin-5 width-100 height-100" 
+        snap-toggle="left">
+        Menu
+      </div>
     </div>  
-    <div class="col-xs-2 border-b">
-      |<
-    </div>
-    <div class="col-xs-4 border-b" ng-click="ttt()">
-      scroll graphic
-    </div>
-    <div class="col-xs-2 border-b">
-      >|
-    </div>  
-    <div class="col-xs-2 border-b" ng-click="locked = !locked">
-      lock Graphic
+    <div class="col-xs-3 vertical-align padding-0" 
+      ng-click="locked = !locked">
+      <div class="btn btn-primary btn-xs margin-5 width-100">
+        <input type="checkbox" ng-checked="locked"/>
+        &nbsp;
+        <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+        &nbsp;Lock
+      </div>
     </div>        
+    <div class="col-xs-3 vertical-align padding-0" 
+      ng-click="pretty_print = !pretty_print">
+      <div class="btn btn-primary btn-xs margin-5 width-100">
+        <input type="checkbox" ng-checked="pretty_print"/>
+        &nbsp;
+        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+        &nbsp;Pretty
+      </div>
+    </div>      
+    <div class="col-xs-3 vertical-align padding-0">
+      <div class="btn btn-primary btn-xs margin-5 width-100">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          &nbsp;Delete
+      </div>
+    </div>          
   </div>
 
   <div class="row">
       <div gridster="gridsterOpts" class="col-xs-12">
           <ul>
-              <li ng-if="locked" gridster-item="item" ng-repeat="item in current_items" ng-click="insertValue(item.value)">
-                  {{item.name}}
+              <li class="grid-button-locked" ng-if="locked" gridster-item="item" ng-repeat="item in current_items" ng-click="insertValue(item.value)">
+                  <div class="tac margin-top-30">
+                    {{item.name}}
+                  </div>                  
               </li>
-              <li ng-if="!locked" gridster-item="item" ng-repeat="item in current_items">
+              <li class="grid-button-unlocked" ng-if="!locked" gridster-item="item" ng-repeat="item in current_items">
+                <div class="tac margin-top-30">
                   {{item.name}}
+                </div>
               </li>              
           </ul>
       </div>
