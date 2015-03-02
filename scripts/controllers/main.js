@@ -45,7 +45,7 @@ angular.module('myCalc')
     };
 
 
-    $scope.default_items = [
+    var default_items = [
     /*
       { 
         sizeX: 2,
@@ -199,31 +199,85 @@ angular.module('myCalc')
         value: "pi"  }
     ];
 
+    var default_additional_items = [ 
+      { 
+        sizeX: 1,
+        sizeY: 1,          
+        name: "abs",
+        value: "abs("  }, 
+      { 
+        sizeX: 1,
+        sizeY: 1,          
+        name: "ceil",
+        value: "ceil("  }, 
+      { 
+        sizeX: 1,
+        sizeY: 1,          
+        name: "floor",
+        value: "floor("  },                   
+      { 
+        sizeX: 1,
+        sizeY: 1,          
+        name: "round",
+        value: "round("  },                             
+      { 
+        sizeX: 1,
+        sizeY: 1,          
+        name: "log",
+        value: "log10("  },      
+      { 
+        sizeX: 1,
+        sizeY: 1,          
+        name: "e",
+        value: "e"  },      
+      { 
+        sizeX: 1,
+        sizeY: 1,          
+        name: "deg",
+        value: "deg"  },      
+      { 
+        sizeX: 1,
+        sizeY: 1,          
+        name: ",",
+        value: ","  }                        
+    ];
 
+
+/*
     //initiate the current items that will be displayed
     $scope.current_items = [];
     if(localStorage.getItem("saved_items") == null){
-      $scope.current_items = $scope.default_items;
+      var tmp_arr = default_items;
+      $scope.current_items = tmp_arr;
     }else{
-      //$scope.current_items = $scope.default_items;
+      //$scope.current_items = default_items;
+      console.log("saved items retrieved");      
       $scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
     }   
 
-    //get the last angswer from storage
+    //get the last answer from storage
+    if(localStorage.getItem("last_ans") != null){
+      $scope.last_ans = localStorage.getItem("last_ans");
+    }
+*/
+
+    //initialize the current items that will be displayed
+    $scope.current_items = [];
+    $scope.current_additional_items = [];
+    if(localStorage.getItem("saved_items") == null || localStorage.getItem("saved_additional_items") == null){
+      $scope.current_items = default_items;
+      $scope.current_additional_items = default_additional_items;
+    }else{
+      //$scope.current_items = default_items;
+      $scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
+      $scope.current_additional_items = angular.fromJson(localStorage.getItem("saved_additional_items"));
+    }   
+
+    //get the last answer from storage
     if(localStorage.getItem("last_ans") != null){
       $scope.last_ans = localStorage.getItem("last_ans");
     }
 
-    //adding element
-    //$scope.default_items.push({ size: { x: 1, y: 1 }, position: [0, 0], name: "new" });
-
-
-    $scope.ttt = function(){
-      console.log("yoooink");
-      //ngDialog.open({ template: 'views/result.html' });
-      console.log($scope.caret.set = $scope.form_data.length);
-      console.log($scope.caret.get);
-    };
 
     //disable, able the grid
     $scope.$watch('locked', function(){      
@@ -235,13 +289,19 @@ angular.module('myCalc')
         //$scope.gridsterOpts.resizable.enabled = true;
       }
     });
-/*
-    $scope.$watch('current_items', function(c_items){
-      console.log("one of the items changed");
-      console.log(c_items);
-    }, true);
-*/
-  
+
+    //adding element
+    //default_items.push({ size: { x: 1, y: 1 }, position: [0, 0], name: "new" });
+ 
+    $scope.pushElement = function(index){
+      var tmp = $scope.current_additional_items[index];
+      //remove from current_additional_items list
+      $scope.current_additional_items.splice(index,1);
+      //add to current_items list
+      $scope.current_items.push(tmp);
+    };
+
+
 
     //grid click in Unlocked stage
     var tmp_col = -1;
@@ -252,22 +312,22 @@ angular.module('myCalc')
       //alert(tmp_col);
     };
     //grid delete button action
-    $scope.deleteSelected = function(){
-      
+    $scope.deleteSelected = function(){      
       if(tmp_col == -1 || tmp_row == -1){
         console.log("nothing selected");
       }else{
         for(var i=0; i<$scope.current_items.length; i++){
           if(tmp_col == $scope.current_items[i].col 
             && tmp_row == $scope.current_items[i].row){
+            //add to the addition_items_list
+            $scope.current_additional_items.push($scope.current_items[i]);
             //pop the element from the index
             $scope.current_items.splice(i,1);
             tmp_col = -1;
-            tmp_row = -1;
+            tmp_row = -1;            
           }
         }
-      }
-      
+      }      
     };
     //ng-class for grid selection
     $scope.isGridSelected = function(item){
@@ -334,22 +394,13 @@ angular.module('myCalc')
 
 
     $scope.resetAll = function(){
-      if($scope.current_items == $scope.default_items)
-        console.log("it's same");
-      else
-        console.log("it's different");      
-
-      $scope.current_items = $scope.default_items;
-
-      if($scope.current_items == $scope.default_items)
-        console.log("it's same");
-      else
-        console.log("it's different");
-      
-      console.log("aaaa");
+      $scope.current_items = default_items;   
+      $scope.current_additional_items = default_additional_items;   
     };
+
     $scope.saveCurrent = function(){
       localStorage.setItem("saved_items", angular.toJson($scope.current_items));       
+      localStorage.setItem("saved_additional_items", angular.toJson($scope.current_additional_items));       
     };
 
 
