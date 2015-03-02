@@ -82,7 +82,7 @@
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
           &nbsp;Delete
       </div>
-      <div ng-if="!locked" class="btn btn-danger btn-xs margin-5 width-100">    
+      <div ng-if="!locked" class="btn btn-danger btn-xs margin-5 width-100" ng-click="deleteSelected()">    
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
           &nbsp;Delete
       </div>      
@@ -97,7 +97,7 @@
                     {{item.name}}
                   </div>                  
               </li>
-              <li class="grid-button-unlocked" ng-if="!locked" gridster-item="item" ng-repeat="item in current_items">
+              <li ng-class="isGridSelected(item)" ng-if="!locked" gridster-item="item" ng-repeat="item in current_items">
                 <div class="tac margin-top-30">
                   {{item.name}}
                 </div>

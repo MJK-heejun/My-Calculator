@@ -28,9 +28,8 @@ body{
 	padding: 10px;
 }
 
-.grid-button{
-  
-
+.grid-button-selected{
+  border: 1px dashed #EF5350;
 }
 
 

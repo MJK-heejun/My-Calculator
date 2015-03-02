@@ -33,7 +33,10 @@ angular.module('myCalc')
       floating: true,
       mobileBreakPoint: 330,
       draggable: {
-        enabled: true
+        enabled: true,
+        stop: function(event, $element, widget){
+          $scope.selectGrid(widget);
+        }
       },
       resizable: {
         enabled: false,
@@ -230,6 +233,48 @@ angular.module('myCalc')
         //$scope.gridsterOpts.resizable.enabled = true;
       }
     });
+/*
+    $scope.$watch('current_items', function(c_items){
+      console.log("one of the items changed");
+      console.log(c_items);
+    }, true);
+*/
+  
+
+    //grid click in Unlocked stage
+    var tmp_col = -1;
+    var tmp_row = -1;
+    $scope.selectGrid = function(item){
+      tmp_col = item.col;
+      tmp_row = item.row;
+      //alert(tmp_col);
+    };
+    //grid delete button action
+    $scope.deleteSelected = function(){
+      
+      if(tmp_col == -1 || tmp_row == -1){
+        console.log("nothing selected");
+      }else{
+        for(var i=0; i<$scope.current_items.length; i++){
+          if(tmp_col == $scope.current_items[i].col 
+            && tmp_row == $scope.current_items[i].row){
+            //pop the element from the index
+            $scope.current_items.splice(i,1);
+            tmp_col = -1;
+            tmp_row = -1;
+          }
+        }
+      }
+      
+    };
+    //ng-class for grid selection
+    $scope.isGridSelected = function(item){
+      if(item.col == tmp_col && item.row == tmp_row)
+        return "grid-button-selected";
+      else
+        return "";
+    };
+
 
     $scope.insertValue = function(value){
 
@@ -288,6 +333,7 @@ angular.module('myCalc')
 
     $scope.resetAll = function(){
       $scope.current_items = $scope.default_items;
+      console.log("aaaa");
     };
     $scope.saveCurrent = function(){
       localStorage.setItem("saved_items", angular.toJson($scope.current_items));       
