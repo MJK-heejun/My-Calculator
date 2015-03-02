@@ -16,7 +16,7 @@ angular.module('myCalc')
     $scope.last_ans; //last answer value
     $scope.pretty_print = false; //pretty print by MathJax
     $scope.is_answer_displayed = false; //flag used when displaying answer
-
+ 
     //snapjs setting
     $scope.snapOpts = {
       disable: 'right',
