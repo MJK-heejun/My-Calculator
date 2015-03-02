@@ -8,7 +8,7 @@
  * Controller of the testApp
  */
 angular.module('myCalc')
-  .controller('MainCtrl', function ($scope, snapRemote, ngDialog) {
+  .controller('MainCtrl', function ($scope, snapRemote) {
 
     $scope.locked = true; //flag for lock/unlock
     $scope.form_data_array = []; //array for form_data

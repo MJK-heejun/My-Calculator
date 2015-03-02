@@ -13,11 +13,9 @@ angular
     'ngAnimate',
     'ngMessages',
     'ngRoute',
-    'ngSanitize',
     'ngTouch',
     'gridster',
     'snap',
-    'ngDialog',
     'eb.caret'
   ])
   .config(function ($routeProvider) {
