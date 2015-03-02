@@ -11,7 +11,6 @@
 angular
   .module('myCalc', [
     'ngAnimate',
-    'ngMessages',
     'ngRoute',
     'ngTouch',
     'gridster',
