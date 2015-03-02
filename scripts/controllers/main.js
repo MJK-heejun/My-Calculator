@@ -59,12 +59,14 @@ angular.module('myCalc')
         sizeX: 1,
         sizeY: 1,          
         name: "√",
-        value: "sqrt("  },      
+        value: "sqrt(",
+        position: [0, 0] },      
       { 
         sizeX: 1,
         sizeY: 1,          
         name: "!",
-        value: "!"  },          
+        value: "!",
+        position: [0, 2]   },          
       { 
         sizeX: 1,
         sizeY: 1,          
@@ -332,7 +334,18 @@ angular.module('myCalc')
 
 
     $scope.resetAll = function(){
+      if($scope.current_items == $scope.default_items)
+        console.log("it's same");
+      else
+        console.log("it's different");      
+
       $scope.current_items = $scope.default_items;
+
+      if($scope.current_items == $scope.default_items)
+        console.log("it's same");
+      else
+        console.log("it's different");
+      
       console.log("aaaa");
     };
     $scope.saveCurrent = function(){
