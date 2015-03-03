@@ -168,12 +168,12 @@ angular.module('myCalc')
         value: "3"  },                                          
       { 
         sizeX: 1,
-        sizeY: 2,         
+        sizeY: 1,         
         name: "ANS",
         value: "ans"  },  
       { 
         sizeX: 1,
-        sizeY: 2,          
+        sizeY: 1,          
         name: "=",
         value: "="  },          
       { 
