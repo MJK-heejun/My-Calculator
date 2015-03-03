@@ -17,7 +17,7 @@ angular.module('myCalc')
     $scope.pretty_print = false; //pretty print by MathJax
     $scope.is_answer_displayed = false; //flag used when displaying answer
  
-    var reset_flag = 0; 
+    var reset_flag = 0; //bug alert popup flag for the current version
 
 
     //snapjs setting
@@ -49,15 +49,6 @@ angular.module('myCalc')
 
 
     var default_items = [
-    /*
-      { 
-        sizeX: 2,
-        sizeY: 2, 
-        position: [0, 2], 
-        name: "(",
-        value: "("  },
-      { 
-    */
       { 
         sizeX: 1,
         sizeY: 1,          
@@ -246,23 +237,6 @@ angular.module('myCalc')
     ];
 
 
-/*
-    //initiate the current items that will be displayed
-    $scope.current_items = [];
-    if(localStorage.getItem("saved_items") == null){
-      var tmp_arr = default_items;
-      $scope.current_items = tmp_arr;
-    }else{
-      //$scope.current_items = default_items;
-      console.log("saved items retrieved");      
-      $scope.current_items = angular.fromJson(localStorage.getItem("saved_items"));
-    }   
-
-    //get the last answer from storage
-    if(localStorage.getItem("last_ans") != null){
-      $scope.last_ans = localStorage.getItem("last_ans");
-    }
-*/
 
     //initialize the current items that will be displayed
     $scope.current_items = [];
@@ -293,9 +267,7 @@ angular.module('myCalc')
       }
     });
 
-    //adding element
-    //default_items.push({ size: { x: 1, y: 1 }, position: [0, 0], name: "new" });
- 
+    //adding element to the main content 
     $scope.pushElement = function(index){
       var tmp = $scope.current_additional_items[index];
       //remove from current_additional_items list
@@ -312,7 +284,6 @@ angular.module('myCalc')
     $scope.selectGrid = function(item){
       tmp_col = item.col;
       tmp_row = item.row;
-      //alert(tmp_col);
     };
     //grid delete button action
     $scope.deleteSelected = function(){      
@@ -340,7 +311,7 @@ angular.module('myCalc')
         return "";
     };
 
-
+    //the calculator button action - locked mode
     $scope.insertValue = function(value){
 
       if(typeof $scope.form_data == 'undefined')
@@ -396,6 +367,7 @@ angular.module('myCalc')
     };
 
 
+    //Buggy in the current version. Alert box tells the user about it
     $scope.resetAll = function(){
       if(reset_flag == 0){
         swal("Reset Successful", "You may now click on 'Save' to override the current setting", "success");
@@ -409,11 +381,15 @@ angular.module('myCalc')
     };
 
     $scope.saveCurrent = function(){
-      swal("Saved", "", "success")
+      swal("Saved", "", "success");
       localStorage.setItem("saved_items", angular.toJson($scope.current_items));       
       localStorage.setItem("saved_additional_items", angular.toJson($scope.current_additional_items));       
     };
 
+
+    $scope.infoPopUp = function(){
+      swal("My Calculator V-1.0","Programmed and designed by MJK");
+    };
 
 
     function deleteFromFormDataArray(){
@@ -432,5 +408,7 @@ angular.module('myCalc')
         console.log("??? why < 0?: "+$scope.form_data.length);
       }
     }
+
+
 
   });
