@@ -394,11 +394,13 @@ angular.module('myCalc')
 
 
     $scope.resetAll = function(){
+      swal("Reset Successful", "You may now click on 'Save' to override the current setting", "success")
       $scope.current_items = default_items;   
       $scope.current_additional_items = default_additional_items;   
     };
 
     $scope.saveCurrent = function(){
+      swal("Saved", "", "success")
       localStorage.setItem("saved_items", angular.toJson($scope.current_items));       
       localStorage.setItem("saved_additional_items", angular.toJson($scope.current_additional_items));       
     };
