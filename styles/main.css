@@ -41,3 +41,10 @@ input[type="checkbox"]{
 
 
 
+.modal-dialog{
+  position: absolute;
+  top: 10%;
+  left: 7%;
+  right: auto;
+  width: 80%;
+}
