@@ -17,6 +17,9 @@ angular.module('myCalc')
     $scope.pretty_print = false; //pretty print by MathJax
     $scope.is_answer_displayed = false; //flag used when displaying answer
  
+    var reset_flag = 0; 
+
+
     //snapjs setting
     $scope.snapOpts = {
       disable: 'right',
@@ -394,9 +397,15 @@ angular.module('myCalc')
 
 
     $scope.resetAll = function(){
-      swal("Reset Successful", "You may now click on 'Save' to override the current setting", "success")
-      $scope.current_items = default_items;   
-      $scope.current_additional_items = default_additional_items;   
+      if(reset_flag == 0){
+        swal("Reset Successful", "You may now click on 'Save' to override the current setting", "success");
+        $scope.current_items = default_items;   
+        $scope.current_additional_items = default_additional_items;   
+        reset_flag++;
+      }else{
+        swal("Reset Failed", "Sorry. The current version does not support 'Reset' button being clicked more than once in one session. Please refresh the page to enable it again.", "error");
+      }
+
     };
 
     $scope.saveCurrent = function(){
