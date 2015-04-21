@@ -14,7 +14,7 @@ angular.module('myCalc')
     $scope.form_data_array = []; //array for form_data
     $scope.form_data_array_index = 0; //array for form_data
     $scope.last_ans; //last answer value
-    $scope.pretty_print = false; //pretty print by MathJax
+    $scope.pretty_print = true; //pretty print by MathJax
     $scope.is_answer_displayed = false; //flag used when displaying answer
  
     var reset_flag = 0; //bug alert popup flag for the current version
